@@ -1,12 +1,10 @@
-#importing the gTTS library
 from gtts import gTTS
-#Asking the user for the required text
-mt = input("Enter the required text:\t")
-#Setting the output language
-language = ‘en’
-#Converting text to speech and choosing speed as fast
-voice = gTTS(text=mt, lang=language, slow=False)
-#Saving the speech as mp3 file
-voice.save(“conv.mp3”)
 
-#sksksksknnndfghfjh
+User_input = input("Enter your text: ")
+User_input1 = User_input
+
+language = "en"
+#Converting text to speech and choosing speed as fast
+voice = gTTS(text=User_input1, lang=language, slow=False)
+
+voice.save('prdel.mp3')
