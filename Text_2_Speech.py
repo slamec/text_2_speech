@@ -2,7 +2,7 @@ from gtts import gTTS
 from tkinter import * #import all function from tkinter
 from tkinter import filedialog
 import tkinter.messagebox #message box
-import textract
+import textract #extract files from .doc etc.
 import sys
 import os
 root = Tk() #save file as .pyw to not open cmd window (for exe file use pyinstaller)
@@ -24,13 +24,13 @@ def Open_and_read(): #convert button
 
    global u_text_to_read
 
-   text_to_read = textract.process(directory)
-   u_text_to_read=str(text_to_read,'utf-8')
+   text_to_read = textract.process(directory) #reads particular file
+   u_text_to_read=str(text_to_read,'utf-8') #convert binary code to a string
    print(u_text_to_read)
    
 def Create_file():   
     language = "en"
-    voice = gTTS(text=u_text_to_read, lang=language, slow=False)
+    voice = gTTS(text=u_text_to_read, lang=language, slow=False) #main command
     voice.save("hovno.mp3")       
 
 
