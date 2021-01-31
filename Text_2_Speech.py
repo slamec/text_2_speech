@@ -29,10 +29,15 @@ def Open_and_read(): #convert button
    print(u_text_to_read)
    
 def Create_file():   
+
     language = "en"
     voice = gTTS(text=u_text_to_read, lang=language, slow=False) #main command
-    voice.save("hovno.mp3")       
 
+    voice.save(filedialog.asksaveasfilename(defaultextension='.mp3',filetypes= [('audio (.mp3 file)','.mp3')]))
+    
+       
+    
+    
 
 #GUI driver
 if __name__ == "__main__":
