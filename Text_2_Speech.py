@@ -24,20 +24,24 @@ def Open_and_read(): #convert button
 
    global u_text_to_read
 
-   text_to_read = textract.process(directory) #reads particular file
+   text_to_read = textract.process(directory) #reads particular text file
    u_text_to_read=str(text_to_read,'utf-8') #convert binary code to a string
-   print(u_text_to_read)
+   print(u_text_to_read) #print text and store it
    
 def Create_file():   
 
     language = "en"
     voice = gTTS(text=u_text_to_read, lang=language, slow=False) #main command
 
-    voice.save(filedialog.asksaveasfilename(defaultextension='.mp3',filetypes= [('audio (.mp3 file)','.mp3')]))
+    voice.save(filedialog.asksaveasfilename(defaultextension='.mp3', filetypes= [('Audio file (mp3)','.mp3')])) #mode "w" must be removed, "save" 
     
-       
-    
-    
+
+def Message_window_convert():
+   tkinter.messagebox.showinfo("Done", "Your text is converted to voice")  
+
+def Message_window_save():
+   tkinter.messagebox.showinfo("My task is done" ,"Your file has been saved, see you next time!")
+
 
 #GUI driver
 if __name__ == "__main__":
@@ -46,7 +50,7 @@ if __name__ == "__main__":
     root.geometry("380x170")
     v = StringVar()
     button1 = Button(width = 20, height = 3, text = "Text file location: ", command = Browse_button).grid(row=0, column=2)
-    button2 = Button(width = 20, height = 3, text = "Convert", command = Open_and_read).grid(row=1, column=2)
-    button3 = Button(width = 20, height = 3, text = "Save file as: ", command = Create_file).grid(row=2, column=2)
+    button2 = Button(width = 20, height = 3, text = "Convert", command = lambda:[Open_and_read(), Message_window_convert()]).grid(row=1, column=2)
+    button3 = Button(width = 20, height = 3, text = "Save file as: ", command = lambda: [Create_file(), Message_window_save()]).grid(row=2, column=2)
     
     root.mainloop() 
